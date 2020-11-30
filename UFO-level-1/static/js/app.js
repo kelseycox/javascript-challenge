@@ -1,10 +1,8 @@
 // from data.js
 var tableData = data;
-
-// YOUR CODE HERE!
 var tbody = d3.select("tbody");
 
-//get data and show all on page
+//get data
 tableData.forEach((ufodata) => {
     console.log(ufodata);
     var row = tbody.append('tr');
