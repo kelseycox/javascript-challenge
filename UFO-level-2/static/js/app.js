@@ -30,70 +30,36 @@ filterEntries.on("click", function() {
 
 function buildTable (date, city, state, country, shape, comment) {
     tbody.html("");
-    var filteredData= [];
-    if (date !== "") {filteredData = sightings.filter(sighting => sighting.datetime == date);}
-    else {filteredData = sightings;};
+    var filterData= [];
+    if (date !== "") {filterData = sightings.filter(sighting => sighting.datetime == date);}
+    else {filterData = sightings;};
 
-    if (city !== "") {filteredData = filteredData.filter(data =>data.city == city); };
+    if (city !== "") {filterData = filterData.filter(data =>data.city == city); };
 
-    if (state !== "") {filteredData = filteredData.filter(data => data.state == state);};
+    if (state !== "") {filterData = filterData.filter(data => data.state == state);};
 
-    if (country !=="") {filteredData = filteredData.filter(data => data.country == country); };
+    if (country !=="") {filterData = filterData.filter(data => data.country == country); };
 
-    if (shape !=="" ) {filteredData = filteredData.filter(data => data.shape == shape); };
+    if (shape !=="" ) {filterData = filterData.filter(data => data.shape == shape); };
 
-    if (comment !=="" ) {filteredData = filteredData.filter(data => data.comment == comment); };
+    if (comment !=="" ) {filterData = filterData.filter(data => data.comment == comment); };
 
-    console.log(filteredData);
+    console.log(filterData);
 
-    filteredData.forEach((sighting) => {
+    filterData.forEach((sighting) => {
         var row = tbody.append("tr");
         Object.entries(sighting).forEach(([key,value]) => {var cell = row.append("td");
             cell.text(value);
-
-        });
-    });
-};
-
-
-var tableData = data;
-// console.log(tableData);
-
-var tbody = d3.select("tbody");
-
-tableData.forEach(function(ufodata) {
-    // console.log(ufodata);
-
-    var row = tbody.append("tr");
-
-    Object.entries(ufodata).forEach(function([key, value]) {
-        // console.log(key, value);
-
-        var cell = row.append("td");
-        cell.text(value);
-    });
-});
-
-var button = d3.select("#filter-btn");
-// var form = d3.select ("#form");
-
-// var submit = d3.select("#filter-btn");
-button.on("click", function() {
-
-    // function runEnter() {
-    d3.event.preventDefault();
-    d3.select("tbody").html("");
-
-    var inputvalue = d3.select("#input").property("value");
-    // console.log(dateTime);
-
-    var filteredData = tableData.filter(record => record.datetime === inputvalue ||
+            
+var filterData = filterData.filter(record => record.datetime === inputvalue ||
         record.city === inputvalue ||
         record.state === inputvalue ||
         record.country === inputvalue ||
         record.shape === inputvalue ||
         record.comment === inputcomment);
-    console.log(filteredData);
+    console.log(filterData);
 
+
+        });
     });
-});
+};
