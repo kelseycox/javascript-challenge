@@ -7,7 +7,7 @@ filterEntries.on("click", function() {
 
     d3.event.preventDefault();
 
-    var date = d3.select("#datetime");
+    var datetime = d3.select("#datetime");
     var city = d3.select("#city");
     var state = d3.select("#state");
     var country = d3.select("#country");
@@ -21,17 +21,17 @@ filterEntries.on("click", function() {
     d3.select("#shape");
     d3.select("#comment")
 
-    if (date !== ""|| city !== ""|| state !== ""||country !== ""|| shape !=="" || comment !==""){
+    if (datetime !== ""|| city !== ""|| state !== ""||country !== ""|| shape !=="" || comment !==""){
         buildTable(date,city,state,country,shape, comment);
     }
     else{
         console.log("No input criteria provided.")
     };
 
-function buildTable (date, city, state, country, shape, comment) {
+function buildTable (datetime, city, state, country, shape, comment) {
     tbody.html("");
     var filterData= [];
-    if (date !== "") {filterData = sightings.filter(sighting => sighting.datetime == date);}
+    if (datetime !== "") {filterData = sightings.filter(sighting => sighting.datetime == datetime);}
     else {filterData = sightings;};
 
     if (city !== "") {filterData = filterData.filter(data =>data.city == city); };
